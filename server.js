@@ -12,6 +12,6 @@ app.use("/api/v2", require("./api"))
 
 // sdfsdfsdfdsff
 
-app.listen(8080, ()=>{
+app.listen(3000, ()=>{
     console.log("Server is running..")
 })
