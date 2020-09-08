@@ -13,33 +13,12 @@ router.get("/Budget", async (req, res) => {
   res.json(result);
 });
 
-// Upload Image test
-uploadImage = async (files, doc) => {
-  if (files.image != null) {
-    var fileExtention = files.image.name.split(".")[1];
-    doc.image = `${doc.id}.${fileExtention}`;
-    var newpath = path.resolve(__dirname + "/uploaded/images/") + "/" + doc.image;    
-
-    if (fs.exists(newpath)) {
-      await fs.remove(newpath);
-    }
-    await fs.moveSync(files.image.path, newpath);
-
-    // Update Budget
-    let result = Budget.update(
-      { image: doc.image },
-      { where: { id: doc.id } }
-    );
-    return result;
-  }
-};
 
 router.post("/Budget", (req, res) => {
   try {
     const form = new formidable.IncomingForm();
     form.parse(req, async (error, fields, files) => {
       let result = await Budget.create(fields);
-      result = await uploadImage(files, result);
       res.json({
         result: constants.kResultOk,
         message: JSON.stringify(result)

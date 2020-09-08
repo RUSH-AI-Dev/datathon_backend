@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const sequelize = require("./../db_instance");
+const sequelize = require("../db_instance");
 
 const Bangkok = sequelize.define(
     "Bangkok",

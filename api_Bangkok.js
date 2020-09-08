@@ -30,6 +30,7 @@ uploadImage = async (files, doc) => {
       { image: doc.image },
       { where: { id: doc.id } }
     );
+    console.log(result)
     return result;
   }
 };
