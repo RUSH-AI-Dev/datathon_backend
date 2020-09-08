@@ -10,6 +10,6 @@ app.use(express.static(__dirname + "/uploaded"))
 
 app.use("/api/v2", require("./api"))
 
-app.listen(3000, ()=>{
+app.listen(8080, ()=>{
     console.log("Server is running..")
 })
